@@ -14,6 +14,8 @@
 		7B6C0DCD23E87BBF007123EC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C0DCB23E87BBF007123EC /* LaunchScreen.storyboard */; };
 		7B6C0DD723E8805F007123EC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C0DD623E8805F007123EC /* MainViewController.swift */; };
 		7BE3821F23E9DEEF00B11711 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3821E23E9DEEF00B11711 /* CustomTableViewCell.swift */; };
+		7BE3822123E9E35F00B11711 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3822023E9E35F00B11711 /* PlaceModel.swift */; };
+		7BE3822323E9F2F300B11711 /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3822223E9F2F300B11711 /* NewPlaceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7B6C0DCE23E87BBF007123EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7B6C0DD623E8805F007123EC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7BE3821E23E9DEEF00B11711 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		7BE3822023E9E35F00B11711 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
+		7BE3822223E9F2F300B11711 /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				7B6C0DBD23E87BBA007123EC /* AppDelegate.swift */,
 				7B6C0DBF23E87BBA007123EC /* SceneDelegate.swift */,
 				7B6C0DD623E8805F007123EC /* MainViewController.swift */,
+				7BE3822223E9F2F300B11711 /* NewPlaceViewController.swift */,
 				7BE3821E23E9DEEF00B11711 /* CustomTableViewCell.swift */,
+				7BE3822023E9E35F00B11711 /* PlaceModel.swift */,
 				7B6C0DC323E87BBA007123EC /* Main.storyboard */,
 				7B6C0DC923E87BBF007123EC /* Assets.xcassets */,
 				7B6C0DCB23E87BBF007123EC /* LaunchScreen.storyboard */,
@@ -142,7 +148,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B6C0DBE23E87BBA007123EC /* AppDelegate.swift in Sources */,
+				7BE3822323E9F2F300B11711 /* NewPlaceViewController.swift in Sources */,
 				7B6C0DC023E87BBA007123EC /* SceneDelegate.swift in Sources */,
+				7BE3822123E9E35F00B11711 /* PlaceModel.swift in Sources */,
 				7BE3821F23E9DEEF00B11711 /* CustomTableViewCell.swift in Sources */,
 				7B6C0DD723E8805F007123EC /* MainViewController.swift in Sources */,
 			);
