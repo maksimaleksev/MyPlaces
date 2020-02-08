@@ -42,26 +42,21 @@ class MainViewController: UIViewController {
         
     }
     
-   
-   
+    
+    
     //  MARK: - Navigation
-     
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let place: Place
-            if isFiltering {
-                place = filteredPlaces [indexPath.row]
-            } else {
-                place = places[indexPath.row]
-            }
+            let place = isFiltering ? filteredPlaces[indexPath.row]: places[indexPath.row]
             let newPlaceVC = segue.destination as! NewPlaceViewController
             newPlaceVC.currentPlace = place
             
         }
-     }
-     
+    }
+    
     // MARK: - @IBActions
     
     @IBAction func unwindSegue ( _ segue: UIStoryboardSegue) {
@@ -73,7 +68,7 @@ class MainViewController: UIViewController {
     
     
     @IBAction func sortSelection(_ sender: UISegmentedControl) {
-       sorting()
+        sorting()
     }
     
     
@@ -94,9 +89,9 @@ class MainViewController: UIViewController {
     
     private func sorting() {
         
-         if segmentedControl.selectedSegmentIndex == 0 {
+        if segmentedControl.selectedSegmentIndex == 0 {
             places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
-         } else {
+        } else {
             places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
         }
         tableView.reloadData()
@@ -106,76 +101,69 @@ class MainViewController: UIViewController {
 // MARK: - Table
 
 extension MainViewController: UITableViewDataSource, UITableViewDelegate {
-  
+    
     // MARK: Table view data source
-       
-       
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-           if isFiltering {
-               return filteredPlaces.count
-           }
-           return places.isEmpty ? 0 : places.count
-           
-       }
-       
-       
-       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-           let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
-           
-           var place = Place()
-           
-           if isFiltering {
-               place = filteredPlaces[indexPath.row]
-           } else {
-               place = places[indexPath.row]
-           }
-           
-                  
-           cell.nameLabel.text = place.name
-           cell.locationLabel.text = place.location
-           cell.typeLabel.text = place.type
-           cell.imageOfPlace.image = UIImage(data: place.imageData!)
-           
-           
-           cell.imageOfPlace.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
-           cell.imageOfPlace.clipsToBounds = true
-           
-           
-           return cell
-       }
-       
-       // MARK: Table View Delegate
-       
-       func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-           let place  = places[indexPath.row]
-           let deleteAction = UIContextualAction (style: .destructive, title: "Delete") { (action, view, handler) in
-               StorageManager.deleteObject(place)
-               tableView.deleteRows(at: [indexPath], with: .automatic)
-           }
-           deleteAction.backgroundColor = .red
-           let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-           configuration.performsFirstActionWithFullSwipe = false
-           return configuration
-           
-       }
-       
-       /*
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredPlaces.count
+        }
+        return places.count
         
-        //In earlier iOS:
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! CustomTableViewCell
         
-        override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let place = isFiltering ? filteredPlaces[indexPath.row]: places[indexPath.row]
+       
+        cell.nameLabel.text = place.name
+        cell.locationLabel.text = place.location
+        cell.typeLabel.text = place.type
+        cell.imageOfPlace.image = UIImage(data: place.imageData!)
+        cell.cosmosView.rating = place.rating
         
+        return cell
+    }
+    
+    // MARK: Table View Delegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let place  = places[indexPath.row]
-        let deleteAction = UITableViewRowAction (style: .default, title: "Delete") { (_, _) in
-        StorageManager.deleteObject(place)
-        tableView.deleteRows(at: [indexPath], with: .automatic)
-        
+        let deleteAction = UIContextualAction (style: .destructive, title: "Delete") { (action, view, handler) in
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         }
+        deleteAction.backgroundColor = .red
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
         
-        return [deleteAction]
-        }
-        */
-       
+    }
+    
+    /*
+     
+     //In earlier iOS:
+     
+     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+     
+     let place  = places[indexPath.row]
+     let deleteAction = UITableViewRowAction (style: .default, title: "Delete") { (_, _) in
+     StorageManager.deleteObject(place)
+     tableView.deleteRows(at: [indexPath], with: .automatic)
+     
+     }
+     
+     return [deleteAction]
+     }
+     */
+    
 }
 
 
