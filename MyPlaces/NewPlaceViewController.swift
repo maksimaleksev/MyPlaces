@@ -43,15 +43,21 @@ class NewPlaceViewController: UITableViewController {
     @IBAction func saveButton(_ sender: UIBarButtonItem) {
     }
     
+    //MARK: Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" { return }
+        let mapVC = segue.destination as! MapViewController
+        mapVC.place.name = placeName.text!
+        mapVC.place.location = placeLocation.text
+        mapVC.place.type = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
+    }
     
     func savePlace () {
         
-        var image: UIImage?
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image : #imageLiteral(resourceName: "imagePlaceholder")
+      
         let imageData = image?.pngData()
         
         
@@ -137,7 +143,9 @@ class NewPlaceViewController: UITableViewController {
     }
 }
 
-//MARK: - Work with image
+//MARK: - Extensions
+
+//MARK:  Work with image
 
 extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func chooseImagePicker (source: UIImagePickerController.SourceType){
@@ -159,7 +167,7 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
     }
 }
 
-// MARK: - Text field delegate
+// MARK:  Text field delegate
 
 extension NewPlaceViewController: UITextFieldDelegate {
     // Скрываем клавиатуру по нажатию на Done
