@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class RatingControl: UIStackView {
+class RatingControl: UIStackView {
     
     //MARK: - Properties
     var rating = 0 {
@@ -19,12 +19,12 @@ import UIKit
     
     private var ratingButtons = [UIButton]()
     
-    @IBInspectable var starSize: CGSize = CGSize(width: 44, height: 44) {
+    var starSize: CGSize = CGSize(width: 44, height: 44) {
         didSet{
             setupButtons()
         }
     }
-    @IBInspectable var starCount: Int = 5 {
+    var starCount: Int = 5 {
         didSet {
             setupButtons()
         }
