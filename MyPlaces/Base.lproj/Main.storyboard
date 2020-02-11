@@ -27,7 +27,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="aJp-QF-Mh7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.00000000000006"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="okH-bM-xKd">
                                                     <rect key="frame" x="344" y="189" width="50" height="50"/>
@@ -277,6 +277,17 @@
                                     <action selector="centerViewInUserLocation" destination="0hU-oH-Ucd" eventType="touchUpInside" id="2qh-r7-kiZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07V-wp-SZZ">
+                                <rect key="frame" x="182" y="772" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="8Sa-4z-L3l"/>
+                                    <constraint firstAttribute="height" constant="50" id="mbO-af-bm2"/>
+                                </constraints>
+                                <state key="normal" image="GetDirection"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="0hU-oH-Ucd" eventType="touchUpInside" id="5Um-lm-5Wd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -289,10 +300,12 @@
                             <constraint firstItem="Pc8-Dg-GLx" firstAttribute="trailing" secondItem="a7B-Jc-tnX" secondAttribute="trailing" id="DUt-pG-Wy4"/>
                             <constraint firstItem="Pc8-Dg-GLx" firstAttribute="top" secondItem="zf0-64-clW" secondAttribute="bottom" constant="-217" id="O28-Xi-7rx"/>
                             <constraint firstItem="5AL-CK-1vK" firstAttribute="centerX" secondItem="lYB-Cx-lzP" secondAttribute="centerX" id="RS4-hJ-gEU"/>
+                            <constraint firstItem="a7B-Jc-tnX" firstAttribute="bottom" secondItem="07V-wp-SZZ" secondAttribute="bottom" constant="40" id="Y4V-Sn-rfc"/>
                             <constraint firstItem="zf0-64-clW" firstAttribute="leading" secondItem="a7B-Jc-tnX" secondAttribute="leading" constant="20" id="cAM-eb-sVk"/>
                             <constraint firstItem="cvB-r0-iBH" firstAttribute="top" secondItem="a7B-Jc-tnX" secondAttribute="top" constant="40" id="d34-NF-xql"/>
                             <constraint firstAttribute="bottom" secondItem="Pc8-Dg-GLx" secondAttribute="bottom" id="gEZ-iM-HT6"/>
                             <constraint firstItem="a7B-Jc-tnX" firstAttribute="trailing" secondItem="cvB-r0-iBH" secondAttribute="trailing" constant="40" id="lqj-Wb-y0D"/>
+                            <constraint firstItem="07V-wp-SZZ" firstAttribute="centerX" secondItem="lYB-Cx-lzP" secondAttribute="centerX" id="n5c-qA-FIR"/>
                             <constraint firstItem="a7B-Jc-tnX" firstAttribute="bottom" secondItem="buW-zw-BHP" secondAttribute="bottom" constant="136" id="sMo-fU-Gq9"/>
                             <constraint firstItem="a7B-Jc-tnX" firstAttribute="trailing" secondItem="buW-zw-BHP" secondAttribute="trailing" constant="40" id="vyq-Lf-3ob"/>
                         </constraints>
@@ -301,6 +314,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="zf0-64-clW" id="SxY-6E-c5p"/>
                         <outlet property="doneButton" destination="bjj-bx-CKV" id="jkh-a3-quk"/>
+                        <outlet property="goButton" destination="07V-wp-SZZ" id="AOf-xM-lnh"/>
                         <outlet property="mapPinImage" destination="5AL-CK-1vK" id="o7n-Ku-LJt"/>
                         <outlet property="mapView" destination="Pc8-Dg-GLx" id="5FK-rc-3rD"/>
                     </connections>
@@ -484,6 +498,7 @@
     </scenes>
     <resources>
         <image name="AZ" width="25" height="24"/>
+        <image name="GetDirection" width="50" height="50"/>
         <image name="Location" width="50" height="50"/>
         <image name="Photo" width="195" height="196"/>
         <image name="Pin" width="42" height="42"/>
